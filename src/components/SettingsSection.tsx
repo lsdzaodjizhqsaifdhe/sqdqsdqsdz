@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, User, Volume2, Monitor, Code, Globe, Palette, Bell, RotateCcw, LogOut } from 'lucide-react';
+import { Settings as SettingsIcon, User, Volume2, Monitor, Code, Globe, Palette, Bell, RotateCcw, LogOut, Sun, Moon } from 'lucide-react';
+import { RobloxUser } from '../App';
 
-export function SettingsSection() {
+interface SettingsSectionProps {
+  isDarkTheme: boolean;
+  onThemeChange: (isDark: boolean) => void;
+  user: RobloxUser | null;
+}
+
+export function SettingsSection({ isDarkTheme, onThemeChange, user }: SettingsSectionProps) {
   const [activeTab, setActiveTab] = useState('general');
 
   const tabs = [
@@ -12,17 +19,25 @@ export function SettingsSection() {
     { id: 'advanced', label: 'Avancé', icon: Code }
   ];
 
+  const cardBg = isDarkTheme 
+    ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50'
+    : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg';
+  
+  const textClass = isDarkTheme ? 'text-white' : 'text-gray-900';
+  const textSecondaryClass = isDarkTheme ? 'text-gray-400' : 'text-gray-600';
+  const inputBg = isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-300';
+
   const renderTabContent = () => {
     switch (activeTab) {
       case 'general':
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-white font-medium mb-3">
+              <label className={`block ${textClass} font-medium mb-3`}>
                 <Globe className="inline mr-2" size={16} />
                 Langue
               </label>
-              <select className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+              <select className={`w-full ${inputBg} border rounded-lg px-4 py-3 ${textClass} focus:outline-none focus:border-red-500`}>
                 <option value="fr">Français</option>
                 <option value="en">English</option>
                 <option value="es">Español</option>
@@ -30,32 +45,37 @@ export function SettingsSection() {
             </div>
 
             <div>
-              <label className="block text-white font-medium mb-3">
+              <label className={`block ${textClass} font-medium mb-3`}>
                 <Palette className="inline mr-2" size={16} />
                 Thème
               </label>
-              <div className="grid grid-cols-3 gap-3">
-                <button className="bg-gray-900 border-2 border-blue-500 rounded-lg p-4 text-white font-medium">
-                  Sombre
+              <div className="grid grid-cols-2 gap-3">
+                <button 
+                  onClick={() => onThemeChange(false)}
+                  className={`${!isDarkTheme ? 'border-2 border-red-500 bg-red-50' : `border ${isDarkTheme ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-gray-100'}`} rounded-lg p-4 ${textClass} font-medium transition-all duration-200 flex items-center justify-center space-x-2`}
+                >
+                  <Sun size={18} />
+                  <span>Clair</span>
                 </button>
-                <button className="bg-gray-800 border border-gray-700 rounded-lg p-4 text-gray-400">
-                  Foncé
-                </button>
-                <button className="bg-gray-800 border border-gray-700 rounded-lg p-4 text-gray-400">
-                  Minuit
+                <button 
+                  onClick={() => onThemeChange(true)}
+                  className={`${isDarkTheme ? 'border-2 border-red-500 bg-red-900/20' : `border ${isDarkTheme ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-gray-100'}`} rounded-lg p-4 ${textClass} font-medium transition-all duration-200 flex items-center justify-center space-x-2`}
+                >
+                  <Moon size={18} />
+                  <span>Sombre</span>
                 </button>
               </div>
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-white font-medium">
+              <label className={`flex items-center justify-between ${textClass} font-medium`}>
                 <span>
                   <Bell className="inline mr-2" size={16} />
                   Notifications
                 </span>
                 <input type="checkbox" defaultChecked className="toggle-checkbox" />
               </label>
-              <p className="text-gray-400 text-sm mt-2">Recevoir des notifications pour les mises à jour et événements</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Recevoir des notifications pour les mises à jour et événements</p>
             </div>
           </div>
         );
@@ -64,29 +84,29 @@ export function SettingsSection() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-white font-medium mb-3">Taille du texte</label>
-              <select className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+              <label className={`block ${textClass} font-medium mb-3`}>Taille du texte</label>
+              <select className={`w-full ${inputBg} border rounded-lg px-4 py-3 ${textClass} focus:outline-none focus:border-red-500`}>
                 <option value="small">Petit</option>
-                <option value="medium" selected>Moyen</option>
+                <option value="medium">Moyen</option>
                 <option value="large">Grand</option>
               </select>
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-white font-medium">
+              <label className={`flex items-center justify-between ${textClass} font-medium`}>
                 <span>Animations activées</span>
                 <input type="checkbox" defaultChecked className="toggle-checkbox" />
               </label>
-              <p className="text-gray-400 text-sm mt-2">Activer les animations et transitions fluides</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Activer les animations et transitions fluides</p>
             </div>
 
             <div>
-              <label className="block text-white font-medium mb-3">Mode d'affichage</label>
+              <label className={`block ${textClass} font-medium mb-3`}>Mode d'affichage</label>
               <div className="grid grid-cols-2 gap-3">
-                <button className="bg-gray-900 border-2 border-blue-500 rounded-lg p-4 text-white font-medium">
+                <button className={`${isDarkTheme ? 'bg-gray-900 border-2 border-red-500' : 'bg-red-50 border-2 border-red-500'} rounded-lg p-4 ${textClass} font-medium`}>
                   Étendu
                 </button>
-                <button className="bg-gray-800 border border-gray-700 rounded-lg p-4 text-gray-400">
+                <button className={`${inputBg} border rounded-lg p-4 ${textSecondaryClass}`}>
                   Compact
                 </button>
               </div>
@@ -98,9 +118,9 @@ export function SettingsSection() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-white font-medium mb-3">Volume musique</label>
+              <label className={`block ${textClass} font-medium mb-3`}>Volume musique</label>
               <input type="range" min="0" max="100" defaultValue="75" className="w-full slider" />
-              <div className="flex justify-between text-sm text-gray-400 mt-1">
+              <div className={`flex justify-between text-sm ${textSecondaryClass} mt-1`}>
                 <span>0%</span>
                 <span>75%</span>
                 <span>100%</span>
@@ -108,9 +128,9 @@ export function SettingsSection() {
             </div>
 
             <div>
-              <label className="block text-white font-medium mb-3">Volume effets sonores</label>
+              <label className={`block ${textClass} font-medium mb-3`}>Volume effets sonores</label>
               <input type="range" min="0" max="100" defaultValue="50" className="w-full slider" />
-              <div className="flex justify-between text-sm text-gray-400 mt-1">
+              <div className={`flex justify-between text-sm ${textSecondaryClass} mt-1`}>
                 <span>0%</span>
                 <span>50%</span>
                 <span>100%</span>
@@ -118,11 +138,11 @@ export function SettingsSection() {
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-white font-medium">
+              <label className={`flex items-center justify-between ${textClass} font-medium`}>
                 <span>Sons de l'interface</span>
                 <input type="checkbox" defaultChecked className="toggle-checkbox" />
               </label>
-              <p className="text-gray-400 text-sm mt-2">Sons lors des interactions avec l'interface</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Sons lors des interactions avec l'interface</p>
             </div>
           </div>
         );
@@ -130,32 +150,36 @@ export function SettingsSection() {
       case 'account':
         return (
           <div className="space-y-6">
-            <div className="bg-gray-800/50 rounded-lg p-6">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <User className="text-white" size={24} />
+            {user && (
+              <div className={`${isDarkTheme ? 'bg-gray-800/50' : 'bg-gray-50'} rounded-lg p-6`}>
+                <div className="flex items-center space-x-4 mb-4">
+                  <img 
+                    src={user.avatar} 
+                    alt={user.displayName}
+                    className="w-16 h-16 rounded-full border-2 border-red-500"
+                  />
+                  <div>
+                    <h3 className={`${textClass} font-semibold text-lg`}>{user.displayName}</h3>
+                    <p className={textSecondaryClass}>@{user.username}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-semibold text-lg">John Doe</h3>
-                  <p className="text-gray-400">john.doe@example.com</p>
+                
+                <div className="flex space-x-3">
+                  <button className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-red-700 transition-colors">
+                    Modifier le profil
+                  </button>
+                  <button className={`flex-1 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'} ${textClass} py-2 px-4 rounded-lg font-medium hover:${isDarkTheme ? 'bg-gray-600' : 'bg-gray-300'} transition-colors`}>
+                    Paramètres Roblox
+                  </button>
                 </div>
               </div>
-              
-              <div className="flex space-x-3">
-                <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                  Modifier le profil
-                </button>
-                <button className="flex-1 bg-gray-700 text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-600 transition-colors">
-                  Changer le mot de passe
-                </button>
-              </div>
-            </div>
+            )}
 
             <div>
-              <h4 className="text-white font-medium mb-3">Compte lié</h4>
-              <div className="bg-gray-800/50 rounded-lg p-4 flex items-center justify-between">
-                <span className="text-gray-300">Discord</span>
-                <button className="text-red-400 hover:text-red-300 transition-colors">
+              <h4 className={`${textClass} font-medium mb-3`}>Compte lié</h4>
+              <div className={`${isDarkTheme ? 'bg-gray-800/50' : 'bg-gray-50'} rounded-lg p-4 flex items-center justify-between`}>
+                <span className={textClass}>Roblox</span>
+                <button className="text-red-500 hover:text-red-400 transition-colors">
                   Délier
                 </button>
               </div>
@@ -172,28 +196,28 @@ export function SettingsSection() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="flex items-center justify-between text-white font-medium">
+              <label className={`flex items-center justify-between ${textClass} font-medium`}>
                 <span>Options développeur</span>
                 <input type="checkbox" className="toggle-checkbox" />
               </label>
-              <p className="text-gray-400 text-sm mt-2">Activer les outils de développement et le mode debug</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Activer les outils de développement et le mode debug</p>
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-white font-medium">
+              <label className={`flex items-center justify-between ${textClass} font-medium`}>
                 <span>Logs serveur</span>
                 <input type="checkbox" className="toggle-checkbox" />
               </label>
-              <p className="text-gray-400 text-sm mt-2">Afficher les logs détaillés des serveurs</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Afficher les logs détaillés des serveurs</p>
             </div>
 
-            <div className="border-t border-gray-700 pt-6">
-              <h4 className="text-white font-medium mb-4 text-red-400">Zone de danger</h4>
-              <button className="w-full bg-red-600/20 border border-red-600/50 text-red-400 py-3 px-4 rounded-lg font-medium hover:bg-red-600/30 transition-colors flex items-center justify-center space-x-2">
+            <div className={`border-t ${isDarkTheme ? 'border-gray-700' : 'border-gray-300'} pt-6`}>
+              <h4 className="text-red-500 font-medium mb-4">Zone de danger</h4>
+              <button className="w-full bg-red-600/20 border border-red-600/50 text-red-500 py-3 px-4 rounded-lg font-medium hover:bg-red-600/30 transition-colors flex items-center justify-center space-x-2">
                 <RotateCcw size={16} />
-                <span>Réinitialiser le launcher</span>
+                <span>Réinitialiser ForeM</span>
               </button>
-              <p className="text-gray-500 text-sm mt-2">Cette action supprimera tous vos paramètres et données locales</p>
+              <p className={`${textSecondaryClass} text-sm mt-2`}>Cette action supprimera tous vos paramètres et données locales</p>
             </div>
           </div>
         );
@@ -204,13 +228,13 @@ export function SettingsSection() {
   };
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold text-white mb-8">Paramètres</h1>
+    <div className="h-full overflow-hidden p-6">
+      <h1 className={`text-3xl font-bold ${textClass} mb-6`}>Paramètres</h1>
       
-      <div className="flex gap-8">
+      <div className="h-full flex gap-6">
         {/* Tabs Sidebar */}
         <div className="w-64 flex-shrink-0">
-          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-xl border border-gray-700/50 p-2 space-y-1">
+          <div className={`${cardBg} rounded-xl p-2 space-y-1`}>
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -219,8 +243,8 @@ export function SettingsSection() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-blue-500/30'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                      ? 'bg-gradient-to-r from-red-500/20 to-red-600/20 text-red-600 border border-red-500/30'
+                      : `${textSecondaryClass} hover:${textClass} hover:${isDarkTheme ? 'bg-gray-800/50' : 'bg-gray-100/50'}`
                   }`}
                 >
                   <Icon size={18} />
@@ -232,8 +256,8 @@ export function SettingsSection() {
         </div>
 
         {/* Content */}
-        <div className="flex-1">
-          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-xl border border-gray-700/50 p-8">
+        <div className="flex-1 overflow-auto">
+          <div className={`${cardBg} rounded-xl p-8 h-full`}>
             {renderTabContent()}
           </div>
         </div>

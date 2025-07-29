@@ -8,16 +8,29 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: #dc2626;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #b91c1c;
+}
+
+/* Dark theme scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #dc2626;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
 }
 
 /* Custom toggle checkbox */
@@ -25,7 +38,7 @@
   appearance: none;
   width: 48px;
   height: 24px;
-  background-color: #374151;
+  background-color: #d1d5db;
   border-radius: 12px;
   position: relative;
   cursor: pointer;
@@ -33,7 +46,7 @@
 }
 
 .toggle-checkbox:checked {
-  background-color: #3b82f6;
+  background-color: #dc2626;
 }
 
 .toggle-checkbox::before {
@@ -56,7 +69,7 @@
 .slider {
   appearance: none;
   height: 6px;
-  background: #374151;
+  background: #d1d5db;
   border-radius: 3px;
   outline: none;
 }
@@ -65,20 +78,20 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #3b82f6;
+  background: #dc2626;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .slider::-webkit-slider-thumb:hover {
-  background: #2563eb;
+  background: #b91c1c;
 }
 
 .slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: #3b82f6;
+  background: #dc2626;
   border-radius: 50%;
   cursor: pointer;
   border: none;
@@ -106,17 +119,13 @@
   transition-duration: 150ms;
 }
 
-/* Glow effects */
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+/* Red glow effects */
+.glow-red {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
 }
 
-.glow-pink {
-  box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
-}
-
-.glow-green {
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+.glow-red-strong {
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
 }
 
 /* Custom animations */
@@ -129,11 +138,59 @@
   animation: float 3s ease-in-out infinite;
 }
 
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4); }
+@keyframes glow-pulse-red {
+  0%, 100% { box-shadow: 0 0 5px rgba(220, 38, 38, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 30px rgba(220, 38, 38, 0.4); }
 }
 
-.animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
+.animate-glow-pulse-red {
+  animation: glow-pulse-red 2s ease-in-out infinite;
+}
+
+/* Red theme colors */
+.text-primary {
+  color: #dc2626;
+}
+
+.bg-primary {
+  background-color: #dc2626;
+}
+
+.border-primary {
+  border-color: #dc2626;
+}
+
+.hover\:text-primary:hover {
+  color: #dc2626;
+}
+
+.hover\:bg-primary:hover {
+  background-color: #dc2626;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-red {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.bg-gradient-red-light {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+/* Custom focus styles */
+.focus-red:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
