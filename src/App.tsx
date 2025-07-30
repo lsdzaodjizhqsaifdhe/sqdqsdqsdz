@@ -43,7 +43,7 @@ export interface RobloxGame {
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [user, setUser] = useState<RobloxUser | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [lastPlayedGame, setLastPlayedGame] = useState<RobloxGame | null>(null);
@@ -99,16 +99,16 @@ function App() {
   };
 
   const themeClasses = isDarkTheme 
-    ? 'bg-gradient-to-br from-gray-900 via-black to-red-900/20'
+    ? 'bg-gray-900'
     : 'bg-gradient-to-br from-gray-50 via-white to-red-50';
 
   return (
     <div className={`min-h-screen ${themeClasses} transition-all duration-500`}>
       {/* Background pattern */}
-      <div className="fixed inset-0 opacity-5">
+      <div className="fixed inset-0 opacity-3">
         <div className="absolute inset-0" style={{
           backgroundImage: isDarkTheme 
-            ? 'radial-gradient(circle at 25% 25%, #dc2626 0%, transparent 50%), radial-gradient(circle at 75% 75%, #991b1b 0%, transparent 50%)'
+            ? 'radial-gradient(circle at 25% 25%, #1f2937 0%, transparent 50%), radial-gradient(circle at 75% 75%, #374151 0%, transparent 50%)'
             : 'radial-gradient(circle at 25% 25%, #fca5a5 0%, transparent 50%), radial-gradient(circle at 75% 75%, #f87171 0%, transparent 50%)',
         }} />
       </div>

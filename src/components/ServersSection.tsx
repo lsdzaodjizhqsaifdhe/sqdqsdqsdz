@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, Star, Users, Heart, Play, ArrowLeft, ExternalLink, Globe, Shield, Zap } from 'lucide-react';
+import { Search, Filter, Star, Users, Heart, Play, ArrowLeft, ExternalLink, Globe, Shield, Zap, Eye, MessageCircle } from 'lucide-react';
 import { RobloxGame, RobloxUser } from '../App';
 
 interface ServersSectionProps {
@@ -16,42 +16,42 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
   const games: RobloxGame[] = [
     {
       id: '1',
-      name: 'Adopt Me!',
-      description: 'Élève des animaux virtuels et décore ta maison de rêve !',
-      players: 245678,
-      maxPlayers: 999999,
-      creator: 'DreamCraft',
-      tags: ['simulation', 'animaux', 'famille', 'social'],
-      image: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'REDSIDE RP V5',
+      description: 'RP Sérieux → Contenu exclusif',
+      players: 728,
+      maxPlayers: 1450,
+      creator: 'RedSide Team',
+      tags: ['roleplay', 'esx', 'rp', 'police'],
+      image: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=100',
       banner: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1200',
       rating: 4.8,
       visits: 28500000000,
       featured: true,
       details: {
-        genre: 'Simulation de vie',
+        genre: 'Roleplay',
         created: '14 juillet 2017',
         updated: 'Il y a 2 heures',
         maxServers: 48,
-        language: 'Français/Anglais',
+        language: 'Français',
         allowedGear: ['Tous les équipements'],
-        description: 'Adopt Me! est l\'expérience #1 sur Roblox ! Élève et prends soin d\'une variété d\'animaux mignons qui écloront d\'œufs !',
+        description: 'Serveur RP sérieux avec contenu exclusif et staff actif',
         features: [
-          'Plus de 180 animaux à collectionner',
-          'Décore ta maison avec des milliers d\'objets',
-          'Échange avec des joueurs du monde entier',
-          'Événements saisonniers réguliers'
+          'Plus de 180 métiers disponibles',
+          'Système économique avancé',
+          'Events réguliers',
+          'Staff professionnel 24/7'
         ]
       }
     },
     {
       id: '2',
-      name: 'Brookhaven RP',
-      description: 'Vis ta vie dans une ville moderne avec tes amis !',
-      players: 189432,
-      maxPlayers: 999999,
-      creator: 'Wolfpaq',
-      tags: ['roleplay', 'ville', 'social', 'simulation'],
-      image: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Dynasty RP',
+      description: 'RETOUR DE LA V1 → FreeAccess → RP Fun → Retour aux sources',
+      players: 197,
+      maxPlayers: 1200,
+      creator: 'Dynasty Team',
+      tags: ['roleplay', 'rp', 'police', 'vrp'],
+      image: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=100',
       banner: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1200',
       rating: 4.6,
       visits: 15200000000,
@@ -60,9 +60,9 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
         created: '21 avril 2020',
         updated: 'Il y a 1 jour',
         maxServers: 12,
-        language: 'Multilingue',
+        language: 'Français',
         allowedGear: ['Aucun équipement'],
-        description: 'Bienvenue à Brookhaven, où tu peux être qui tu veux ! Roleplay avec tes amis, explore la ville.',
+        description: 'Retour aux sources du RP avec Dynasty',
         features: [
           'Ville entièrement explorable',
           'Système de véhicules réaliste',
@@ -70,16 +70,100 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
           'Emplois et activités variés'
         ]
       }
+    },
+    {
+      id: '3',
+      name: 'RevolutionRP',
+      description: 'FREE→ACCESS → Optimisé → Staff actif → discord.gg/revrp',
+      players: 263,
+      maxPlayers: 2048,
+      creator: 'Revolution Team',
+      tags: ['roleplay', 'esx', 'rp', 'police'],
+      image: 'https://images.pexels.com/photos/1666310/pexels-photo-1666310.jpeg?auto=compress&cs=tinysrgb&w=100',
+      banner: 'https://images.pexels.com/photos/1666310/pexels-photo-1666310.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      rating: 4.7,
+      visits: 9800000000,
+      details: {
+        genre: 'Roleplay',
+        created: '6 juin 2018',
+        updated: 'Il y a 3 heures',
+        maxServers: 20,
+        language: 'Français',
+        allowedGear: ['Aucun équipement'],
+        description: 'Serveur RP optimisé avec staff actif',
+        features: [
+          'Serveur optimisé',
+          'Staff disponible 24/7',
+          'Discord actif',
+          'Communauté bienveillante'
+        ]
+      }
+    },
+    {
+      id: '4',
+      name: 'UNITY RP V2 #1',
+      description: '#SERVEUR→EXCLUSIF → RP Sérieux → Optimisé → Contenu E...',
+      players: 834,
+      maxPlayers: 2048,
+      creator: 'Unity Team',
+      tags: ['roleplay', 'rp', 'fr', 'life'],
+      image: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=100',
+      banner: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      rating: 4.9,
+      visits: 12400000000,
+      featured: true,
+      details: {
+        genre: 'Roleplay',
+        created: '17 janvier 2019',
+        updated: 'Il y a 30 minutes',
+        maxServers: 30,
+        language: 'Français',
+        allowedGear: ['Aucun équipement'],
+        description: 'Serveur exclusif Unity RP avec contenu premium',
+        features: [
+          'Contenu exclusif premium',
+          'Serveur ultra optimisé',
+          'RP sérieux uniquement',
+          'Events hebdomadaires'
+        ]
+      }
+    },
+    {
+      id: '5',
+      name: 'SensityRP',
+      description: 'FREE→ACCESS UNIQUE → Chaque moment est une décou...',
+      players: 105,
+      maxPlayers: 2048,
+      creator: 'Sensity Team',
+      tags: ['roleplay', 'rp', 'police', 'ems'],
+      image: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=100',
+      banner: 'https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      rating: 4.5,
+      visits: 8500000000,
+      details: {
+        genre: 'Roleplay',
+        created: '12 mars 2021',
+        updated: 'Il y a 1 heure',
+        maxServers: 15,
+        language: 'Français',
+        allowedGear: ['Aucun équipement'],
+        description: 'Découvrez une expérience RP unique',
+        features: [
+          'Expérience unique',
+          'Accès gratuit',
+          'Découvertes constantes',
+          'Communauté active'
+        ]
+      }
     }
   ];
 
   const filters = [
     { id: 'all', label: 'Tous' },
-    { id: 'simulation', label: 'Simulation' },
-    { id: 'action', label: 'Action' },
     { id: 'roleplay', label: 'Roleplay' },
-    { id: 'obby', label: 'Obby' },
-    { id: 'social', label: 'Social' }
+    { id: 'esx', label: 'ESX' },
+    { id: 'police', label: 'Police' },
+    { id: 'rp', label: 'RP' }
   ];
 
   const filteredGames = games.filter(game => {
@@ -97,20 +181,22 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
     return num.toString();
   };
 
-  const cardBg = isDarkTheme 
-    ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50'
-    : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg';
-  
-  const textClass = isDarkTheme ? 'text-white' : 'text-gray-900';
-  const textSecondaryClass = isDarkTheme ? 'text-gray-400' : 'text-gray-600';
-  const inputBg = isDarkTheme ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-300';
+  const getServerIcon = (name: string) => {
+    const firstLetter = name.charAt(0).toUpperCase();
+    const colors = [
+      'bg-red-600', 'bg-blue-600', 'bg-green-600', 'bg-purple-600', 
+      'bg-yellow-600', 'bg-pink-600', 'bg-indigo-600', 'bg-orange-600'
+    ];
+    const colorIndex = name.charCodeAt(0) % colors.length;
+    return { letter: firstLetter, color: colors[colorIndex] };
+  };
 
   if (selectedGame) {
     return (
-      <div className="h-full overflow-auto p-6">
+      <div className="h-full overflow-auto p-6 bg-gray-900">
         <button
           onClick={() => setSelectedGame(null)}
-          className={`flex items-center space-x-2 ${textSecondaryClass} hover:${textClass} mb-6 transition-colors`}
+          className="flex items-center space-x-2 text-gray-400 hover:text-white mb-6 transition-colors"
         >
           <ArrowLeft size={20} />
           <span>Retour aux serveurs</span>
@@ -134,7 +220,7 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
                 <div className="flex items-center space-x-6 mt-3">
                   <div className="flex items-center space-x-1 text-green-400">
                     <Users size={16} />
-                    <span className="font-medium">{formatNumber(selectedGame.players)} joueurs</span>
+                    <span className="font-medium">{selectedGame.players}/{selectedGame.maxPlayers}</span>
                   </div>
                   <div className="flex items-center space-x-1 text-yellow-400">
                     <Star size={16} />
@@ -155,14 +241,14 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className={`${cardBg} rounded-xl p-6`}>
-              <h2 className={`${textClass} text-xl font-bold mb-4`}>À propos de cette expérience</h2>
-              <p className={`${textClass} leading-relaxed mb-4`}>{selectedGame.details.description}</p>
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+              <h2 className="text-white text-xl font-bold mb-4">À propos de cette expérience</h2>
+              <p className="text-white leading-relaxed mb-4">{selectedGame.details.description}</p>
               <div className="flex flex-wrap gap-2">
                 {selectedGame.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-red-500/20 text-red-500 text-sm rounded-full border border-red-500/30"
+                    className="px-3 py-1 bg-red-500/20 text-red-400 text-sm rounded-full border border-red-500/30"
                   >
                     {tag}
                   </span>
@@ -170,16 +256,16 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
               </div>
             </div>
 
-            <div className={`${cardBg} rounded-xl p-6`}>
-              <h2 className={`${textClass} text-xl font-bold mb-4 flex items-center space-x-2`}>
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+              <h2 className="text-white text-xl font-bold mb-4 flex items-center space-x-2">
                 <Zap className="text-yellow-400" size={20} />
                 <span>Fonctionnalités</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {selectedGame.details.features.map((feature, index) => (
-                  <div key={index} className={`flex items-center space-x-3 p-3 ${isDarkTheme ? 'bg-gray-800/30' : 'bg-gray-50'} rounded-lg`}>
+                  <div key={index} className="flex items-center space-x-3 p-3 bg-gray-700/30 rounded-lg">
                     <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className={textClass}>{feature}</span>
+                    <span className="text-white">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -187,20 +273,20 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
           </div>
 
           <div className="space-y-6">
-            <div className={`${cardBg} rounded-xl p-6`}>
-              <h3 className={`${textClass} font-bold text-lg mb-4`}>Informations</h3>
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+              <h3 className="text-white font-bold text-lg mb-4">Informations</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className={textSecondaryClass}>Genre</span>
-                  <span className={`${textClass} font-medium`}>{selectedGame.details.genre}</span>
+                  <span className="text-gray-400">Genre</span>
+                  <span className="text-white font-medium">{selectedGame.details.genre}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={textSecondaryClass}>Créé le</span>
-                  <span className={`${textClass} font-medium`}>{selectedGame.details.created}</span>
+                  <span className="text-gray-400">Créé le</span>
+                  <span className="text-white font-medium">{selectedGame.details.created}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={textSecondaryClass}>Mis à jour</span>
-                  <span className="text-red-500 font-medium">{selectedGame.details.updated}</span>
+                  <span className="text-gray-400">Mis à jour</span>
+                  <span className="text-red-400 font-medium">{selectedGame.details.updated}</span>
                 </div>
               </div>
             </div>
@@ -211,123 +297,151 @@ export function ServersSection({ isDarkTheme, user, onGamePlay }: ServersSection
   }
 
   return (
-    <div className="h-full overflow-hidden p-6">
-      <div className="mb-6">
-        <h1 className={`text-3xl font-bold ${textClass} mb-6`}>Expériences Roblox</h1>
-        
-        <div className="flex flex-col lg:flex-row gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 ${textSecondaryClass}`} size={20} />
-            <input
-              type="text"
-              placeholder="Rechercher une expérience..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className={`w-full ${inputBg} border rounded-xl pl-12 pr-4 py-3 ${textClass} placeholder-${textSecondaryClass} focus:outline-none focus:border-red-500 transition-colors`}
-            />
+    <div className="h-full overflow-hidden bg-gray-900">
+      {/* Header avec recherche et filtres */}
+      <div className="p-6 border-b border-gray-800">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-2xl font-bold text-white">Serveurs</h1>
+          <div className="flex items-center space-x-4">
+            <button className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-lg transition-colors">
+              <Filter size={16} />
+              <span>Filter</span>
+            </button>
+            <button className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-lg transition-colors">
+              <Eye size={16} />
+            </button>
           </div>
-          
-          <div className="flex items-center space-x-2">
-            <Filter className={textSecondaryClass} size={20} />
-            {filters.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setSelectedFilter(filter.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                  selectedFilter === filter.id
-                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white'
-                    : `${isDarkTheme ? 'bg-gray-800/50' : 'bg-gray-100'} ${textSecondaryClass} hover:${textClass}`
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
+        </div>
+        
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <input
+            type="text"
+            placeholder='Search'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full bg-gray-800 border border-red-500 rounded-lg pl-12 pr-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-red-400 transition-colors"
+          />
+        </div>
+        
+        <div className="flex flex-wrap gap-2 mt-4">
+          {filters.map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => setSelectedFilter(filter.id)}
+              className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
+                selectedFilter === filter.id
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700'
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Liste des serveurs */}
+      <div className="flex-1 overflow-auto">
+        <div className="p-6">
+          <div className="space-y-2">
+            {filteredGames.map((game) => {
+              const serverIcon = getServerIcon(game.name);
+              return (
+                <div
+                  key={game.id}
+                  onClick={() => setSelectedGame(game)}
+                  className="group flex items-center space-x-4 p-3 bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50 rounded-lg cursor-pointer transition-all duration-200"
+                >
+                  {/* Icône du serveur */}
+                  <div className={`w-10 h-10 ${serverIcon.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-white font-bold text-sm">{serverIcon.letter}</span>
+                  </div>
+
+                  {/* Nom et description */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center space-x-2">
+                      <h3 className="text-white font-semibold text-sm group-hover:text-red-400 transition-colors truncate">
+                        {game.name}
+                      </h3>
+                      {game.featured && (
+                        <Star className="text-red-500 fill-current flex-shrink-0" size={14} />
+                      )}
+                    </div>
+                    <p className="text-gray-400 text-xs truncate">{game.description}</p>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="hidden lg:flex items-center space-x-1 flex-shrink-0">
+                    {game.tags.slice(0, 4).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded border border-gray-600/50"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Indicateurs */}
+                  <div className="flex items-center space-x-3 text-xs text-gray-400 flex-shrink-0">
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <span className="text-yellow-500">🇫🇷</span>
+                    </div>
+                  </div>
+
+                  {/* Joueurs */}
+                  <div className="text-right flex-shrink-0">
+                    <div className="text-white font-medium text-sm">
+                      {game.players} / {game.maxPlayers}
+                    </div>
+                  </div>
+
+                  {/* Bouton rejoindre */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onGamePlay(game);
+                    }}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors flex-shrink-0"
+                  >
+                    Rejoindre
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <div className="h-full overflow-auto space-y-4">
-        {filteredGames.map((game) => (
-          <div
-            key={game.id}
-            onClick={() => setSelectedGame(game)}
-            className={`group ${cardBg} rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl cursor-pointer ${
-              game.featured 
-                ? 'border-red-500/50 hover:border-red-400/70' 
-                : 'hover:border-red-300/50'
-            }`}
-          >
-            <div className="flex items-center p-6">
-              <div className="relative w-32 h-32 rounded-xl overflow-hidden flex-shrink-0">
-                <img 
-                  src={game.image} 
-                  alt={game.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                {game.featured && (
-                  <div className="absolute top-2 right-2">
-                    <Star className="text-red-500 fill-current" size={20} />
-                  </div>
-                )}
+      {/* Sidebar des serveurs populaires */}
+      <div className="fixed right-6 top-24 w-80 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4">
+        <div className="flex items-center space-x-2 mb-4">
+          <Star className="text-red-500" size={16} />
+          <h3 className="text-white font-semibold">Featured servers</h3>
+        </div>
+        
+        <div className="space-y-3">
+          {[
+            { name: 'Arena', desc: 'PvP • Gun Game • King Of The Hill • Tournaments •', players: '521 / 2048', color: 'bg-green-600' },
+            { name: 'Impulse99 Freeroam', desc: 'Custom cars and maps! Join various minigames: from', players: '210 / 900', color: 'bg-red-600' },
+            { name: 'GLife: Extinction & Freeroam New Season', desc: 'Gangs • Businesses • Survival • Fuel • Zombies', players: '184 / 999', color: 'bg-blue-600' },
+            { name: 'Cops and Robbers V NA #1', desc: 'Cops • Robbers • EMS • Truckers • Drugs • Redzones', players: '108 / 110', color: 'bg-yellow-600' },
+            { name: 'RSM Freeroam: NA', desc: 'Custom Cars & Maps • Drifting • Racing • PvP • Mi', players: '104 / 2000', color: 'bg-purple-600' }
+          ].map((server, index) => (
+            <div key={index} className="flex items-center space-x-3 p-2 hover:bg-gray-700/30 rounded-lg cursor-pointer transition-colors">
+              <div className={`w-8 h-8 ${server.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                <span className="text-white font-bold text-xs">{server.name.charAt(0)}</span>
               </div>
-
-              <div className="flex-1 ml-6">
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h3 className={`${textClass} font-bold text-2xl group-hover:text-red-500 transition-colors mb-1`}>
-                      {game.name}
-                    </h3>
-                    <p className="text-red-500 font-medium">Par {game.creator}</p>
-                  </div>
-                  <button className={`p-2 ${textSecondaryClass} hover:text-red-500 transition-colors`}>
-                    <Heart size={24} />
-                  </button>
-                </div>
-                
-                <p className={`${textSecondaryClass} mb-4 text-lg`}>{game.description}</p>
-                
-                <div className="flex items-center space-x-6 mb-4">
-                  <div className="flex items-center space-x-2 text-green-500">
-                    <Users size={18} />
-                    <span className="font-medium text-lg">{formatNumber(game.players)} joueurs</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-yellow-500">
-                    <Star size={18} />
-                    <span className="text-lg">{game.rating}/5</span>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {game.tags.slice(0, 4).map((tag) => (
-                    <span
-                      key={tag}
-                      className={`px-3 py-1 ${isDarkTheme ? 'bg-gray-700/50' : 'bg-gray-100'} ${textSecondaryClass} text-sm rounded-full`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-white font-medium text-sm truncate">{server.name}</div>
+                <div className="text-gray-400 text-xs truncate">{server.desc}</div>
               </div>
-
-              <div className="flex flex-col items-end space-y-4 ml-6">
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onGamePlay(game);
-                  }}
-                  className="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 hover:shadow-lg hover:shadow-red-500/25 hover:scale-105 flex items-center space-x-2"
-                >
-                  <Play size={20} />
-                  <span>REJOINDRE</span>
-                </button>
-                <button className="text-red-500 hover:text-red-400 font-medium transition-colors flex items-center space-x-1">
-                  <span>Voir détails</span>
-                  <ExternalLink size={16} />
-                </button>
-              </div>
+              <div className="text-gray-300 text-xs flex-shrink-0">{server.players}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

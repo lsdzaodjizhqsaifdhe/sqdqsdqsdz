@@ -20,7 +20,7 @@ export function Header({ currentSection, onSectionChange, isDarkTheme, onThemeCh
   ];
 
   const bgClass = isDarkTheme 
-    ? 'bg-black/90 backdrop-blur-sm border-b border-gray-800' 
+    ? 'bg-gray-900/95 backdrop-blur-sm border-b border-gray-800' 
     : 'bg-white/90 backdrop-blur-sm border-b border-gray-200';
 
   const textClass = isDarkTheme ? 'text-white' : 'text-gray-900';
